@@ -1,5 +1,6 @@
 # app.py - Main starting point of application
 
+import os
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -7,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 #creating app secret to enable me use sessions later
-app.secret_key = 'aaUDndid8395r-%98374+nsunbs'
+app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'dev-only-change-me')
 
 #in order to prevent ambiguity for this simple proof-of-concept ptoject I will use 
 # a python dictionaly as my global database
